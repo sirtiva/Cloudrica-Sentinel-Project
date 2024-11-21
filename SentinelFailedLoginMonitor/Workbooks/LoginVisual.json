@@ -1,0 +1,20 @@
+{
+    "version": "Notebook/1.0",
+    "items": [
+      {
+        "type": "query",
+        "content": {
+          "query": "SigninLogs | where ResultType == \"50126\" | summarize Count = count() by IPAddress, bin(TimeGenerated, 1h)",
+          "chartSettings": { "chartType": "Line" }
+        }
+      },
+      {
+        "type": "map",
+        "content": {
+          "query": "SigninLogs | where ResultType == \"50126\" | extend Geo = parse_json(externaldata)",
+          "mapSettings": { "mapType": "Heatmap" }
+        }
+      }
+    ]
+  }
+  
